@@ -1,9 +1,14 @@
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # .env 파일 로드
+# 아직 구현중...
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+
+
 # config.py (예시)
-class Config:
-    SECRET_KEY = 'your_secret_key'
-    OPENAI_API_KEY = 'your_openai_api_key'
-    KAKAO_BOOK_API_KEY = 'your_kakao_api_key'
-    YOUTUBE_API_KEY = 'your_youtube_api_key'
 
 # utils/emotion_api.py (예시)
 # import openai

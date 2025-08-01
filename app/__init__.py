@@ -1,5 +1,5 @@
 from flask import Flask
-
+# pip install python-dotenv
 # run.py에서 넘어온다.
 
 def create_app():

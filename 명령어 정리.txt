@@ -1,0 +1,10 @@
+자주 쓰는 명령어 정리:
+
+pip freeze > requirements.txt
+=> pip 설치가 필요한 모듈을 requirements.txt로 저장
+
+pip install -r requirements.txt
+=> pip 설치가 필요한 모듈을 바로 불러올 수 있다.
+
+pip install python-dotenv
+=> .env 파일을 만들게 해줌
