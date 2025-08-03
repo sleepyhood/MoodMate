@@ -4,12 +4,13 @@ body {
     background: linear-gradient(135deg, #ececec, #d1d1d1); /* 부드러운 그라데이션 배경 */
     color: #333;  /* 텍스트 색 */
     margin: 0;
-    padding: 0;
+    padding: 40px 20px;
     height: 100vh; /* 화면을 꽉 채우는 높이 */
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     text-align: center;
+        min-height: 100vh;
 }
 
 /* 글래스모피즘을 적용할 컨테이너 */
@@ -19,9 +20,11 @@ body {
     border-radius: 15px; /* 둥근 모서리 */
     padding: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
-    max-width: 500px;
+    max-width: 700px;
     width: 100%;
-    margin: 20px;
+    /* margin: 20px; */
+      margin: 40px auto;  /* 🔥 가운데 정렬 */
+
 }
 
 /* 헤더 스타일 */
@@ -74,4 +77,58 @@ button:hover {
     color: red;
     font-size: 14px;
     margin-top: 10px;
+}
+.card-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-card {
+  background: rgba(255, 255, 255, 0.35); /* 조금 더 강조 */
+    backdrop-filter: blur(8px);
+  padding: 1.2rem 1.4rem;  /* 💡 여백 줄임 */
+  border-radius: 15px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;         /* 💡 글씨 크기 증가 */
+  line-height: 1.5;          /* 💡 줄간격 조정 */
+  color: #222;
+  white-space: pre-wrap;
+  transition: transform 0.2s;
+
+  
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+}
+
+.result-card h4 {
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+  color: #444;
+}
+.summary-card {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.35);
+  font-weight: 500;
+  border-left: 5px solid #888;
+  line-height: 0.5;       /* 💡 줄 간격 줄이기 */
+}
+
+.summary-card h4 {
+  font-size: 1.3rem;
+  margin: 0.4em 0 0.3em 0;  /* 💡 상단/하단 여백 조정 */
+  color: #222;
+}
+
+.summary-card p {
+  margin: 0.3em 0;        /* 💡 문단 여백 최소화 */
 }

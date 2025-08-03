@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>감정 분석 웹앱</title>
-    <link rel="stylesheet" href="static/css/style.css"> <!-- CSS 파일 연결 -->
-</head>
-<body>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <!-- CSS 파일 연결 -->
+  </head>
+  <body>
     <div class="container">
-        <h1>오늘의 기분은 어때요?</h1>
+      <h1>오늘의 기분은 어때요?</h1>
 
-        <!-- 사용자 입력 폼 -->
-        <form action="/submit" method="POST">
-            <label for="emotion_input">기분을 입력하세요:</label><br>
-            <textarea name="emotion_input" id="emotion_input" rows="4" cols="50" placeholder="기분을 입력해 주세요..."></textarea><br>
-            <button type="submit">분석하기</button>
-        </form>
+      <!-- 사용자 입력 폼 -->
+      <form action="/submit" method="POST">
+        <label for="emotion_input">기분을 입력하세요:</label><br />
+        <textarea
+          name="emotion_input"
+          id="emotion_input"
+          rows="4"
+          cols="50"
+          placeholder="기분을 입력해 주세요..."
+        ></textarea
+        ><br />
+        <button type="submit">분석하기</button>
+      </form>
+
+      {% if error %}
+      <p style="color: red">{{ error }}</p>
+      {% endif %} {% if sentiment %}
+      <h3>AI 감정 분석 결과:</h3>
+
+      <div class="card-group">
+        <div class="result-card summary-card">
+          <h4>✅ 현재 감정</h4>
+          <p>{{ sentiment.emotion }}</p>
+          <h4>📕 추천 도서</h4>
+          <p>{{ sentiment.book }}</p>
+          <h4>🎵 추천 음악</h4>
+          <p>{{ sentiment.music }}</p>
+        </div>
+
+        <div class="result-card">
+          <h4>감정 분석</h4>
+          <p>{{ sentiment.emotion_detail }}</p>
+        </div>
+
+        <div class="result-card">
+          <h4>도서 설명</h4>
+          <p>{{ sentiment.book_detail }}</p>
+        </div>
+
+        <div class="result-card">
+          <h4>음악 설명</h4>
+          <p>{{ sentiment.music_detail }}</p>
+        </div>
+      </div>
+      {% endif %}
     </div>
-</body>
+  </body>
 </html>
