@@ -47,11 +47,26 @@
 
         <div class="result-card">
           <h4>도서 설명</h4>
+          {% if book_info %}
+
+          <div class="book-card">
+            <h3>📕 {{ book_info.title }}</h3>
+            <p><strong>저자:</strong> {{ book_info.authors | join(', ') }}</p>
+            <img
+              src="{{ book_info.thumbnail }}"
+              alt="도서 이미지"
+              style="max-width: 150px"
+            />
+            <p>{{ book_info.contents }}</p>
+            <a href="{{ book_info.url }}" target="_blank">📖 자세히 보기</a>
+          </div>
+          {% endif %}
           <p>{{ sentiment.book_detail }}</p>
         </div>
 
         <div class="result-card">
           <h4>음악 설명</h4>
+          <p>{{ sentiment.music }}</p>
           <p>{{ sentiment.music_detail }}</p>
         </div>
       </div>

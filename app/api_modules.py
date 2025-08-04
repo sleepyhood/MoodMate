@@ -1,9 +1,39 @@
 from google import genai
 import re, json
+import requests
+from dotenv import load_dotenv
+import os
 
 # pip install -q -U google-genai
 # The client gets the API key from the environment variable `GEMINI_API_KEY`.
 client = genai.Client()
+
+load_dotenv()
+KAKAO_API_KEY = os.getenv("KAKAO_API_KEY")
+
+
+def search_book_by_title(title):
+    url = "https://dapi.kakao.com/v3/search/book"
+    headers = {"Authorization": f"KakaoAK {KAKAO_API_KEY}"}
+    params = {"query": title, "target": "title", "size": 1}  # 가장 상위 결과 1개만
+
+    response = requests.get(url, headers=headers, params=params)
+
+    if response.status_code == 200:
+        result = response.json()
+        if result.get("documents"):
+            book = result["documents"][0]
+            return {
+                "title": book["title"],
+                "authors": book["authors"],
+                "thumbnail": book["thumbnail"],
+                "contents": book["contents"],
+                "url": book["url"],
+            }
+    else:
+        print("📛 카카오 API 요청 실패:", response.status_code)
+
+    return None  # 실패 시
 
 
 def extract_json_from_text(text):
